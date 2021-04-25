@@ -1,0 +1,576 @@
+    1  exit
+    2  sudo podman ports
+    3  podman search nginx
+    4  sudo podman run nginx
+    5  sudo podman login -u petronela-cretu -p 858b83bb854842439a62
+    6  sudo podman login -u petronela-cretu -p 858b83bb854842439a62 redhat.io
+    7  sudo podman login -u petronela-cretu -p 858b83bb854842439a62 redhat.com
+    8  oc login -u petronela-cretu
+    9  oc login -u petronela-cretu -p 858b83bb854842439a62
+   10  pwd
+   11  sudo podman run registry.access.redhat.com/rhscl/nginx-18-rhel7
+   12  s2i
+   13  yum install s2i
+   14  sudo yum install s2i
+   15  sudo yum provides */dockerfile
+   16  sudo yum provides */Dockerfile
+   17  go get github.com/openshift/source-to-image/cmd/s2i
+   18  sudo podman ps
+   19  sudo podman ps -a
+   20  sudo podman inspect epic_dubinsky
+   21  sudo podman exec --help
+   22  sudo podman inspect --help
+   23  sudo podman logs epic_dubinsky
+   24  clear
+   25  lab-configure
+   26  sda
+   27  lab-configure
+   28  git clone https://github.com/PetronellaPC/DO180-apps
+   29  lab-configure
+   30  source /usr/local/etc/ocp4.config
+   31  oc login -u petronela-cretu
+   32  oc get co
+   33  oc version
+   34  oc status
+   35  oc new-project mynewproject
+   36  oc new-app ruby~https://github.com/sclorg/ruby-ex.git
+   37  oc status
+   38  oc get all
+   39  sudo podman search ruby-ex
+   40  sudo podman images
+   41  sudo podman inspect 8040477ac106
+   42  oc get all
+   43  oc get ruby-ex-67d6859978-lqn5v
+   44  oc get pod ruby-ex-67d6859978-lqn5v
+   45  oc --help
+   46  oc get --
+   47  oc get --help
+   48  oc get pod ruby-ex-67d6859978-lqn5v -o
+   49  oc get pod ruby-ex-67d6859978-lqn5v -o yaml
+   50  oc patch -h
+   51  oc set -h
+   52  oc get all
+   53  lab-configure
+   54  oc login -u petronela-cretu
+   55  ls 
+   56  cd var/containersMount
+   57  mkdir var/containersMount
+   58  ls
+   59  mkdir -R var/containersMount
+   60  mkdir --help
+   61  mkdir v
+   62  rm v
+   63  rm -R v
+   64  ls
+   65  mkdir var
+   66  cd var/
+   67  mkdir containersMount
+   68  cd
+   69  sudo chown -R 27:27 var/containersMount
+   70  sudo semanage fcontext -a -t container_file_t 'var/containersMount(/.*)?'
+   71  semanage -h
+   72  semanage fcontext -h
+   73  restorecon -h
+   74  restorecon --help
+   75  man restorecon
+   76  sudo restorecon -Rv var/containersMount
+   77  rm -R var
+   78  ls
+   79  rm -R var
+   80  ls
+   81  mc
+   82  mkdir var
+   83  mkdir var/mount
+   84  sudo chown -R 27:27
+   85  sudo chown -R 27:27 var/mount/
+   86  sudo semanage fcontext -a -t 'var/mount(/.*)?'
+   87  sudo semanage fcontext -a -t container_file_t 'var/mount(/.*)?'
+   88  sudo restorecon -Rv var/mount/
+   89  ls
+   90  rm -R var
+   91  mkdir var
+   92  mkdir var/mount
+   93  sudo chown -R 27:27 var/mount/
+   94  sudo semanage fcontext -a -t container_file_t 'var/mount(/.*)?'
+   95  sudo rstorecon -Rv var/mount
+   96  sudo restorecon -Rv var/mount
+   97  sudo podman run --name mysql -v var/mount:var/lib/mysql rhmap47/mysql
+   98  sudo podman run --name mysql -v var/mount:var rhmap47/mysql
+   99  sudo podman run --name mysql -v var/mount:/var/lib/mysql rhmap47/mysql
+  100  ls
+  101  pwd
+  102  sudo podman run --name mysql -v ~/var/mount:/var/lib/mysql rhmap47/mysql
+  103  sudo podman ps -a
+  104  sudo podman --help
+  105  sudo podman rm --help
+  106  sudo podman rm -a
+  107  sudo podman images
+  108  sudo podman rmi -a
+  109  oc status
+  110  oc delete all -l app=ruby-ex
+  111  oc status
+  112  oc delete pod/ruby-ex-67d6859978-lqn5v
+  113  oc get all
+  114  oc status
+  115  oc get projects
+  116  oc get ns
+  117  lab manage-storage start
+  118  ls
+  119  cd DO180-apps/
+  120  ls
+  121  man mkdir
+  122  cd
+  123  sudo mkdir -pv /var/local/mysql
+  124  sudo mkdir -pv var/local/mysql
+  125  lab manage-storage start
+  126  oc api-resources | less
+  127  sudo semanage fcontext -a -t container_file_t '/var/local/mysql(/.*)?'
+  128  sudo restorecon -Rv /var/local/mysql/
+  129  man ls
+  130  ls -dZ /var/local/mysql/
+  131  ls -dZ /var/local/mysql
+  132  sudo chown -Rv 27:27 /var/local/mysql/
+  133  sudo podman run --name mysql-persistent -d -v /var/local/mysql:/var/lib/mysql/data -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypass -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 rhscl/mysql-57-rhel7
+  134  sudo podman ps
+  135  sudo ps inspect mysql-persistent
+  136  sudo podman inspect mysql-persistent
+  137  man ssh
+  138  man dd
+  139  man ssh
+  140  sudo podman ps --format="table {{.ID}} {{.NAMES}}"
+  141  sudo podman ps --format="table {{.ID}} {{.Names}}"
+  142  ls -l /var/local/mysql/
+  143  oc policy --help
+  144  oc policy add-role-to-user --help
+  145  clear
+  146  oc policy add-role-to-user --help
+  147  oc get clusterroles
+  148  oc get clusterrolebindings.
+  149  oc get clusterrolebindings
+  150  oc get clusterrolebinding
+  151  oc clusterrolebinding
+  152  oc get clusterrolebinding -o wide
+  153  whoami
+  154  vim /etc/cni/net.d/87-podman-bridge.conflist 
+  155  lab manage-networking start
+  156  sudo podman run --name mysqldb-port -d -v /var/local/mysql:/var/lib/mysql/data -p 13306:3306 -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 rhscl/mysql-57-rhel7
+  157  sudo podman ps --format="{{.Ports}}"
+  158  mysql
+  159  mysql -uuser1 -h127.0.0.1 -pmypa55 -P13306 items < ~/DO180/labs/manage-networking/db.sql 
+  160  sudo podman exec -it mysqldb-port > /opt/rh/rh-mysql57/root/usr/bin/mysql -uroot items -e "select * from item"
+  161  sudo podman exec -it mysqldb-port  /opt/rh/rh-mysql57/root/usr/bin/mysql -uroot items -e "SELECT * FROM Item"
+  162  sudo podman exec -it mysqldb-port /opt/rh/rh-mysql57/root/usr/bin/mysql -uroot items -e "select * from item"
+  163  sudo podman exec -it mysqldb-port /bin/bash
+  164  mysql --help
+  165  mysql -uuser1 -127.0.0.1 -pmypa55 -P13306 items -e "select * from Item"
+  166  mysql -uuser1 -h 127.0.0.1 -pmypa55 -P13306 items -e "select * from Item"
+  167  lab manage-networking finish
+  168  lab-configure 
+  169  lab manage-review start
+  170  cd /var
+  171  ls
+  172  cd local/
+  173  ls
+  174  ls -a
+  175  cd
+  176  mkdir -pv /var/lacal/mysql
+  177  mkdir -pv /var/local/mysql
+  178  sudo mkdir -pv /var/local/mysql
+  179  semanage fcontext -a -t container_file_t "/var/local/mysql(/.*)?"
+  180  sudo semanage fcontext -a -t container_file_t "/var/local/mysql(/.*)?"
+  181  sudo restorecon -Rv /var/local/mysql/
+  182  sudo shown -R 27:27 /var/local/mysql/
+  183  sudo chown -R 27:27 /var/local/mysql/
+  184  sudo podman run -d -v /var/local/mysql:/var/lib/mysql/data --name mysql-1 -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypas55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 rhscl/mysql-57-rhel7
+  185  sudo podman ps -o wide
+  186  sudo podman ps
+  187  sudo podman ps --format="{{.Port}}"
+  188  sudo podman ps --format="{{.Ports}}"
+  189  sudo podman ps --help
+  190  sudo podman inspect -f '{{ .NetworkSettings.IPAddress }}' mysql-1
+  191  mysql -uuser1 -h 10.88.0.6:3306 -pmypa55 < ~/DO180/labs//manage-review/db.sql 
+  192  sudo mysql -uuser1 -h 10.88.0.6:3306 -pmypa55 < ~/DO180/labs//manage-review/db.sql 
+  193  mysql -uuser1 -h 10.88.0.6 -pmypa55 items < ~/DO180/labs//manage-review/db.sql 
+  194  sudo mysql -uuser1 -h 10.88.0.6 -pmypa55 items < ~/DO180/labs//manage-review/db.sql 
+  195  sudo podman inspect -f '{{ .NetworkSettings.IPAddress }}' mysql-1
+  196  mysql -uuser1 -h 10.88.0.6 -pmypa55 items < ~/DO180/labs//manage-review/db.sql 
+  197  mysql -uuser1 -h 10.88.0.6 -pmypa55 items < /home/student/DO180/labs/manage-review/db.sql
+  198  mysql -uuser1 -h 10.88.0.1 -pmypa55 items < /home/student/DO180/labs/manage-review/db.sql
+  199  mysql -uroot -h 10.88.0.6 -pr00tpa55 items < /home/student/DO180/labs/manage-review/db.sql
+  200  mysql -uroot -h 10.88.0.6 -pr00tpa55 items > -e "select * from Item"
+  201  mysql -uroot -h 10.88.0.6 -pr00tpa55 items > -ve "select * from Item"
+  202  mysql -uroot -h 10.88.0.6 -pr00tpa55 items > -e "select * from Item"
+  203  sudo podman exec -it > mysql -uuser1 -h 10.88.0.6 -pmypa55 items -e "select *  from Item"
+  204  sudo podman exec -it mysql -uuser1 -h 10.88.0.6 -pmypa55 items -e "select *  from Item"
+  205  sudo podman exec -it mysql-1 mysql -uuser1 -h 10.88.0.6 -pmypa55 items -e "select *  from Item"
+  206  sudo podman exec -it mysql-1 find / -name mysql
+  207  sudo podman exec -it mysql-1 /opt/rh/rh-mysql57/root/usr/bin/mysql -uroot -h 10.88.0.6 -pr00tpa55 items -e "select *  from Item"
+  208  sudo podman stop mysql
+  209  sudo podman stop mysql-1
+  210  sudo podman ps 
+  211  sudo podman ps -a
+  212  sudo podman run -d -v /var/local/mysql:/var/lib/mysql/data --name mysql-2 -p 13306:3306 -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypas55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 rhscl/mysql-57-rhel7
+  213  sudo podman ps > /tmp/my-containers
+  214  sudo podman ps -a > /tmp/my-containers
+  215  sudo podman exec -it mysql-2 /bin/bash
+  216  mysql -uroot -h 13306 -pr00tpa55 -e "insert into items.Item (description, done) values("finished lab", "1");
+  217  sudo podman exec -it mysql-2 /bin/bash
+  218  mysql -uroot -h 13306 -pr00tpa55 -e "insert into items.Item (description, done) values("finished lab", "1");"
+  219  mysql -uroot -h localhost:13306 -pr00tpa55 -e "insert into items.Item (description, done) values("finished lab", "1");"
+  220  mysql -uuser1 -h 127.0.0.1:13306 -pmypa55 -e "insert into items.Item (description, done) values("finished lab", "1");"
+  221  ip -a
+  222  ip
+  223  ip --help
+  224  mysql -uuser1 -h 127.0.0.1 -pmypa55 -P13306 -e "insert into items.Item (description, done) values("finished lab", "1");"
+  225  mysql -uroot -h 127.0.0.1 -pr00tpa55 -P13306 -e "insert into items.Item (description, done) values("finished lab", "1");"
+  226  mysql -uroot -h 127.0.0.1 -pr00tpa55 -P13306 -e "insert into items.Item (description, done) values(\"finished lab\", "1");"
+  227  sudo podman exec -it mysql-2 /bin/bash
+  228  sudo podman rm mysql-1
+  229  lab manage-review grade
+  230  mysql -uroot -h 127.0.0.1 -pr00tpa55 -P13306 -e "insert into items.Item (description, done) values(\"Finished lab\", "1");"
+  231  lab manage-review grade
+  232  mysql -uroot -h 127.0.0.1 -pr00tpa55 -P13306 -e "update items.Item set description=\"Finished lab\" where id=3;"
+  233  lab manage-review grade
+  234  sudo podman exec -it mysql-2 /bin/bash
+  235  lab manage-review grade
+  236  which lab
+  237  vim  $(which lab)
+  238  mysql -uuser1 -h workstation.lab.example.com -pmypa55 -P13306 items
+  239  mysql -uroot -h workstation.lab.example.com -pr00tpa55 -P13306 items
+  240  lab manage-review grade
+  241  mysql -uroot -h workstation.lab.example.com -pr00tpa55 -P13306 items
+  242  lab manage-review grade
+  243  mysql -sN -uuser1 -h 127.0.0.1 -pmypa55 -P13306 items -e "SELECT * FROM Item" | grep "Finished lab" | wc -l
+  244  mysql -sN -uroot -h 127.0.0.1 -pr00tpa55 -P13306 items -e "SELECT * FROM Item" | grep "Finished lab" | wc -l
+  245  mysql -sN -uroot -h 127.0.0.1 -pr00tpa55 -P13306 items -e "SELECT * FROM Item" | grep "Finished lab" 
+  246  lab manage-review grade
+  247  history
+  248  lab image-review start
+  249  podman search nginx:1.17
+  250  find / -name registries.conf
+  251  find / -name registries.conf 2>/dev/null
+  252  vim $(find / -name registries.conf 2>/dev/null)
+  253  sudo vim $(find / -name registries.conf 2>/dev/null)
+  254  podman search nginx:1.17
+  255  sudo vim $(find / -name registries.conf 2>/dev/null)
+  256  podman search nginx:1.17
+  257  sudo vim $(find / -name registries.conf 2>/dev/null)
+  258  podman search nginx:1.17
+  259  sudo podman search docker.io/library/nginx:1.17
+  260  sudo podman search quay.io/redhattraining/nginx:1.17
+  261  sudo podman pull quay.io/redhattraining/nginx:1.17
+  262  sudo podman run -d --name official-nginx -p 8080:80 quay.io/redhattraining/nginx:1.17
+  263  sudo podman ps
+  264  sudo podman logs officil-ninx
+  265  sudo podman logs officil-nginx
+  266  sudo podman logs official-nginx
+  267  sudo podman logs-f  official-nginx
+  268  sudo podman logs -f  official-nginx
+  269  podman cp --help
+  270  ls
+  271  vim index.html
+  272  sudo podman cp ~/index.html /usr/share/nginx/html
+  273  sudo podman cp ~/index.html official-nginx:/usr/share/nginx/html
+  274  sudo podman stop official-nginx
+  275  sudo podman ps -a
+  276  sudo podman commit --help
+  277  sudo podman commit official-nginx do180/mynginx:v1.0-SNAPSHOT -a "bibu"
+  278  sudo podman images ls
+  279  sudo podman images
+  280  sudo podman ps -a
+  281  sudo podman run -d --name official-nginx-dev do180/mynginx
+  282  sudo podman run -d --name official-nginx-dev do180/mynginx:v1.0-SNAPSHOT
+  283  sudo podman --help
+  284  sudo podman stop official-nginx-dev && sudo podman rm official-nginx-dev
+  285  sudo podman run -d --name official-nginx-dev -p 8080:80 do180/mynginx:v1.0-SNAPSHOT
+  286  sudo podman exec official-nginx-dev echo "DO180 Page." > /usr/share/nginx/html/index.html
+  287  history | grep "exec"
+  288  sudo podman exec -it official-nginx-dev echo "DO180 Page." > /usr/share/nginx/html/index.html
+  289  curl localhost:8080
+  290  sudo podman exec -it official-nginx-dev /bin/bash
+  291  curl localhost:8080
+  292  sudo podman stop official-nginx-dev
+  293  sudo podman commit official-nginx-dev do180/mynginx:v1.0 -a "bibu"
+  294  sudo podman rm official-nginx-dev
+  295  sudo podman rmi do180/mynginx:v1.0-S*
+  296  sudo podman rmi do180/mynginx:v1.0-SNAPSHOT
+  297  podman images
+  298  history
+  299  sudo podman pull quay.io/redhattraining/nginx:1.17
+  300  sudo podman run -d --name official-nginx -p 8080:80 quay.io/redhattraining/nginx:1.17
+  301  sudo podman ps -a
+  302  sudo podman commit official-nginx do180/mynginx:v1.0-SNAPSHOT -a "bibu"
+  303  history
+  304  sudo podman run -d --name official-nginx-dev do180/mynginx:v1.0-SNAPSHOT
+  305  sudo podman stop official-nginx-dev && sudo podman rm official-nginx-dev
+  306  sudo podman run -d --name official-nginx-dev -p 8080:80 do180/mynginx:v1.0-SNAPSHOT
+  307  sudo podman exec -it official-nginx-dev /bin/bash
+  308  curl localhost:8080 & podman images
+  309  sudo podman images
+  310  sudo podman ps -a
+  311  sudo podman rm official-nginx-dev
+  312  sudo podman stop official-nginx-dev
+  313  sudo podman rm official-nginx-dev
+  314  sudo podman ps -a
+  315  sudo podman rmi localhost/do180/mynginx:v1.0-SNAPSHOT
+  316  sudo podman images
+  317  sudo podman run -d --name my-nginx -p 8280:80 do180/mynginx:v1.0
+  318  curl localhost:8280
+  319  lab image-review grade
+  320  cd /usr/local/lib
+  321  ls
+  322  cat lab-image-review 
+  323  vim lab-image-review 
+  324  lab image-review finish
+  325  oc --help
+  326  oc new-app --list
+  327  lab dockerfile-review start
+  328  cd DO180/labs/dockerfile-review/
+  329  ls
+  330  vim Dockerfile 
+  331  yum --help
+  332  vim Dockerfile 
+  333  sudo podman build --help
+  334  sudo podman build do180/custom-apache .
+  335  ls
+  336  vim Dockerfile 
+  337  sudo podman build do180/custom-apache .
+  338  sudo podman -t build do180/custom-apache .
+  339  sudo podman build -t do180/custom-apache .
+  340  sudo podman images
+  341  sudo podman rmi c05e1472cfb4
+  342  sudo podman images
+  343  vim Dockerfile 
+  344  sudo podman build -t do180/custom-apache .
+  345  sudo podman images
+  346  sudo podman docker run -d --name dockerfile -p 20080:8080 do180/custom-apache
+  347  sudo podman run -d --name dockerfile -p 20080:8080 do180/custom-apache
+  348  images ps
+  349  sudo podman ps
+  350  sudo podman ps -a
+  351  sudo podman ps
+  352  sudo podman logs dockerfile
+  353  sudo podman rmi do180/custom-apache
+  354  sudo podman rm dockerfile
+  355  sudo podman rmi do180/custom-apache
+  356  vim Dockerfile 
+  357  sudo podman build -t do180/custom-apache .
+  358  sudo podman images
+  359  sudo podman run -d --name dockerfile -p 20080:8080 do180/custom-apache
+  360  sudo podman logs dockerfile
+  361  sudo podman ps
+  362  vim Dockerfile 
+  363  lcd
+  364  cd
+  365  oc login
+  366  lab-configure
+  367  oc login -u petronela-cretu
+  368  lab openshift-review start
+  369  source /usr/local/etc/ocp4.config
+  370  oc new-project petronela-cretu-ocp
+  371  oc new-app --as-deployment-config php:7.3~https://github.com/RedHatTraining/DO180-apps --context-dir temps --name temps
+  372  oc get all
+  373  oc expose svc temps
+  374  oc get pods
+  375  oc get route/temps
+  376  lab openshift-review grade
+  377  lab openshift-review finish 
+  378  oc get all
+  379  oc status
+  380  lab-configure 
+  381  lab multicontainer-design start
+  382  cd DO180/labs/multicontainer-design/images/mysql/
+  383  ls
+  384  vim Dockerfile 
+  385  cd
+  386  clear
+  387  oc process --help
+  388  oc get templates -n openshift
+  389  oc get templates -n openshift | grep mysql
+  390  oc get templates -n openshift | grep mysql | grep php
+  391  oc process cakephp-mysql-persistent
+  392  oc process openshift/cakephp-mysql-persistent
+  393  export TEMPLATE=oc get templates -n openshift | grep mysql | grep php | grep persistent
+  394  TEMPLATE=oc get templates -n openshift | grep mysql | grep php | grep persistent
+  395  TEMPLATE=oc get templates -n openshift | grep mysql | grep php | grep persistent`
+  396  TEMPLATE=`oc get templates -n openshift | grep mysql | grep php | grep persistent`
+  397  echo TEMPLATE
+  398  echo ${TEMPLATE}
+  399  oc process cakephp-mysql-persistent
+  400  cd DO180/labs/
+  401  ls
+  402  cd multicontainer-design/
+  403  ls
+  404  cd deploy/
+  405  ls
+  406  cd nodejs/
+  407  ls
+  408  cd
+  409  lab multicontainer-review 
+  410  lab multicontainer-review start
+  411  cd DO180/labs/
+  412  ls
+  413  cd multicontainer-review/
+  414  ls
+  415  oc create -f quote-php-template.json 
+  416  oc get all
+  417  oc get templates
+  418  oc process quote-php-template.json 
+  419  oc process quote-php-template
+  420  oc process quote-php-persistent
+  421  oc process quote-php-persistent -p RHT_OCP4_QUAY_USER=petronella
+  422  oc create -f --help
+  423  oc create --help
+  424  vim quote-php-template.json 
+  425  lab troubleshoot-container start
+  426  cd  ..
+  427  cd troubleshoot-container/
+  428  ls
+  429  cd conf
+  430  vim httpd.conf 
+  431  -x s2i
+  432  strace -c ls
+  433  cd -
+  434  cd
+  435  cd -
+  436  strace --help
+  437  strace -h
+  438  strace -C vim conf/httpd.conf 
+  439  vim conf/httpd.conf 
+  440  sudo podman build -t troubleshoot-container .
+  441  sudo podman images
+  442  sudo podman run -d --name troublw 
+  443  sudo podman run -d --name troubleshoot-container -p 10080:80 troubleshoot-container
+  444  sudo podman ps
+  445  oc port-forward --help
+  446  sudo podman logs troubleshoot-container
+  447  curl localhost:10080
+  448  sudo podman logs troubleshoot-container
+  449  lab troubleshoot finish
+  450  lab troubleshoot-container finish
+  451  sudo podman prune
+  452  oc prune
+  453  clear
+  454  lab troubleshoot-review  start
+  455  cd 
+  456  cd DO180-apps/
+  457  git status
+  458  git checkout -b troubleshoot-review
+  459  git push -u origin troubleshoot-review 
+  460  cd
+  461  oc get template openshift/cakephp-mysql-persistent
+  462  oc describe openshift/cakephp-mysql-persistent
+  463  oc describe cakephp-mysql-persistent - openshift
+  464  oc describe cakephp-mysql-persistent -n openshift
+  465  oc describe -n openshift template/cakephp-mysql-persistent
+  466  oc get -n openshift template/cakephp-mysql-persistent
+  467  oc get -n openshift template/cakephp-mysql-persistent -o yaml
+  468  oc get -n openshift template/cakephp-mysql-persistent -o yaml  process -f -
+  469  oc get -n openshift template/cakephp-mysql-persistent -o yaml | process -f -
+  470  oc get -n openshift template/cakephp-mysql-persistent -o yaml | oc process -f -
+  471  cd DO180-apps/
+  472  source $(find / -name *.config 2>/dev/null)
+  473  find / -name *.config 2>/dev/null
+  474  source /usr/local/etc/ocp4.config
+  475  oc login -u petronela-cretu
+  476  oc new-project petronela-cretu-nodejs-app
+  477  ls
+  478  cd nodejs-
+  479  cd nodejs-app/
+  480  ls
+  481  vim package.json 
+  482  vim server.js 
+  483  # oc new-app --as-deployment-config --name nodejs-dev
+  484  oc get is -n openshift
+  485  oc get is -n openshift | nodejs
+  486  oc get is -n openshift | grep nodejs
+  487  oc new-app --as-deployment-config --name nodejs-dev -i nodejs:12 https://github.com/PetronellaPC/DO180-apps#troubleshoot-review --context-dir=nodejs-app --build-env npm_config_registry=http://${RHT_OCP4_NEXUS_SERVER}/repository/npm-proxy
+  488  oc logs -f bc/nodejs-dev
+  489  ls
+  490  vim package.json 
+  491  git commit -am 'correct file'
+  492  oc --help
+  493  oc start-build --help
+  494  oc start-build --from-build=nodejs-dev
+  495  oc start-build nodejs-dev
+  496  oc logs -f bc/nodejs-dev
+  497  vim package.json 
+  498  git commit -am 'correct file'
+  499  oc start-build bc/nodejs-dev
+  500  oc logs -f bc/nodejs-dev
+  501  git commit push
+  502  git push
+  503  oc start-build bc/nodejs-dev
+  504  oc logs -f bc/nodejs-dev
+  505  oc get pods
+  506  oc logs -f nodejs-dev-1-gsztb
+  507  vim server.js 
+  508  git commit -am 'blaghgd' & git push
+  509  oc start-build bc/nodejs-dev
+  510  oc get pods
+  511  oc --help
+  512  oc rollout --help
+  513  oc rollout history
+  514  oc rollout history nodejs-dev
+  515  oc rollout history bc/nodejs-dev
+  516  oc rollout history --help
+  517  oc rollout history dc/nodejs-dev
+  518  oc expose svc/nodejs-dev
+  519  oc get route
+  520  curl nodejs-dev-petronela-cretu-nodejs-app.apps.eu45.prod.nextcle.com
+  521  curl -i nodejs-dev-petronela-cretu-nodejs-app.apps.eu45.prod.nextcle.com
+  522  oc logs dc/nodejs-dev
+  523  vim server.js 
+  524  git commit -am 'blaghgd' & git push
+  525  oc start-build bc/nodejs-dev
+  526  curl -i nodejs-dev-petronela-cretu-nodejs-app.apps.eu45.prod.nextcle.com
+  527  oc logs dc/nodejs-dev
+  528  oc get pods
+  529  oc log bc/nodejs-dev
+  530  oc logs -f bc/nodejs-dev
+  531  oc logs -f dc/nodejs-dev
+  532  curl -i nodejs-dev-petronela-cretu-nodejs-app.apps.eu45.prod.nextcle.com
+  533  oc get pods
+  534  oc logs pod/nodejs-dev-3-78tg7
+  535  vim server.js 
+  536  history
+  537  git commit -am 'blaghgd' & git push
+  538  oc start-build bc/nodejs-dev
+  539  oc get pods
+  540  history
+  541  curl -i nodejs-dev-petronela-cretu-nodejs-app.apps.eu45.prod.nextcle.com
+  542  lab troubleshoot-review grade 
+  543  lab comprehensive-review start
+  544  cd ~/DO180/labs/comprehensive-review//i
+  545  cd ~/DO180/labs/comprehensive-review/image/
+  546  ls
+  547  vim nexus-start.sh 
+  548  vim get-nexus-bundle.sh 
+  549  vim create_nexus_account.snippet 
+  550  source get-nexus-bundle.sh 
+  551  find / -name Dockerfile
+  552  find / -name Dockerfile 2>/dev/null
+  553  s2i --help
+  554  sudo yum provides */Dockerfile
+  555  vim /usr/lib/rustlib/src/rust/src/stdarch/ci/docker/mips64-unknown-linux-gnuabi64/Dockerfile
+  556  cd /usr/share/
+  557  ls
+  558  cd
+  559  sudo find / -name Dockerfile 2>/dev/null
+  560  cd DO180/labs/comprehensive-review/image/
+  561  ls
+  562  vim Dockerfile
+  563  sudo podman build -t --layers=false --name nexus .
+  564  sudo podman build -t --layers=false nexus .
+  565  sudo podman
+  566  sudo podman --help
+  567  sudo podman build --help
+  568  sudo podman build -t nexus --layers=false .
+  569  cd ..
+  570  cd deploy/
+  571  ls
+  572  cd local/
+  573  ls
+  574  vim run-persistent.sh 
+  575  history
+  576  history > do180.txt
